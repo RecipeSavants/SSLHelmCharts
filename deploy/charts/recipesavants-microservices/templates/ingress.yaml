@@ -9,13 +9,17 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "{{ .Values.domainName }}"
-    secretName: "{{ .Values.certSecret }}"
+    - "micro.recipesavants.com"
+    secretName: "tlssecret"
   rules:
-  - host: "{{ .Values.domainName }}"
+  - host: "micro.recipesavants.com"
     http:
       paths:
       - path: /
         backend:
-          serviceName: "{{ .Values.app.name }}"
-          servicePort: "{{ .Values.app.port }}"
+          serviceName: aks-helloworld-1-{{.Release.Name}}
+          servicePort: 80
+      - path: /hello2
+        backend:
+          serviceName: aks-helloworld-2-{{.Release.Name}}
+          servicePort: 80
