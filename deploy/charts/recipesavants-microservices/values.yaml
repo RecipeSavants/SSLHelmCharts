@@ -1,0 +1,9 @@
+---
+ingress:
+  name: myapp-ingress
+
+domainName: micro.recipesavants.com
+ingressClass: nginx
+certIssuer: letsencrypt-prod
+certSecret: recipesavants-microservices
+
